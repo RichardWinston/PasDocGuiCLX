@@ -1,0 +1,861 @@
+object frmHelpGenerator: TfrmHelpGenerator
+  HelpKeyword = 'HelpGeneratorCLX'
+  Left = 418
+  Top = 268
+  Width = 686
+  Height = 649
+  ActiveControl = pcMain
+  Caption = 'Help Generator'
+  Color = clBackground
+  Font.Color = clBlack
+  Font.Height = 16
+  Font.Name = 'adobe-helvetica'
+  Font.Pitch = fpVariable
+  Font.Style = []
+  Font.Weight = 40
+  Menu = MainMenu1
+  ParentFont = False
+  Scaled = False
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  object pcMain: TPageControl
+    Left = 0
+    Top = 0
+    Width = 686
+    Height = 623
+    ActivePage = tabGenerate
+    Align = alClient
+    TabHeight = 25
+    TabOrder = 0
+    OnChange = pcMainChange
+    OnChanging = pcMainChanging
+    OnPageChanging = pcMainPageChanging
+    object tabOptions: TTabSheet
+      HelpKeyword = 'HelpGeneratorCLX#Options_Tab'
+      Caption = 'Options'
+      ImageIndex = 2
+      object clbMethodVisibility: TCheckListBox
+        HelpKeyword = 'HelpGeneratorCLX#Properties_Methods_Events_and_Fields'
+        Left = 448
+        Top = 72
+        Width = 219
+        Height = 129
+        Anchors = [akTop, akRight]
+        ItemHeight = 20
+        Items.Strings = (
+          'Published'
+          'Public'
+          'Protected'
+          'Private'
+          'Automated'
+          'Implicit')
+        Rows = 6
+        TabOrder = 1
+        OnClickCheck = clbMethodVisibilityClickCheck
+      end
+      object comboLanguages: TComboBox
+        HelpKeyword = 'HelpGeneratorCLX#Language'
+        Left = 8
+        Top = 128
+        Width = 425
+        Height = 28
+        Style = csDropDownList
+        Anchors = [akLeft, akTop, akRight]
+        ItemHeight = 22
+        TabOrder = 2
+        OnChange = comboLanguagesChange
+      end
+      object edOutput: TEdit
+        HelpKeyword = 'HelpGeneratorCLX#Output_Directory'
+        Left = 8
+        Top = 280
+        Width = 561
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 4
+        OnChange = edProjectNameChange
+      end
+      object btnBrowseOutputDirectory: TButton
+        Left = 584
+        Top = 280
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 5
+        OnClick = btnBrowseOutputDirectoryClick
+      end
+      object edProjectName: TEdit
+        HelpKeyword = 'HelpGeneratorCLX#Project_Name'
+        Left = 8
+        Top = 64
+        Width = 425
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 0
+        OnChange = edProjectNameChange
+      end
+      object seVerbosity: TSpinEdit
+        HelpKeyword = 'HelpGeneratorCLX#Message_Level'
+        Left = 8
+        Top = 440
+        Width = 101
+        Height = 28
+        Max = 6
+        TabOrder = 10
+        Value = 2
+        OnChanged = seVerbosityChanged
+      end
+      object comboGenerateFormat: TComboBox
+        HelpKeyword = 'HelpGeneratorCLX#Output_Type'
+        Left = 8
+        Top = 496
+        Width = 265
+        Height = 28
+        Style = csDropDownList
+        ItemHeight = 22
+        Items.Strings = (
+          'Generate Web pages'
+          'Generate HML Help Workshop project'
+          'Generate LaTeX'
+          'Generate LaTeX for Latex2Rtf')
+        ItemIndex = 0
+        TabOrder = 11
+        Text = 'Generate Web pages'
+        OnChange = comboGenerateFormatChange
+      end
+      object Label6: TLabel
+        Left = 8
+        Top = 8
+        Width = 411
+        Height = 40
+        Caption = 
+          'Project Name (The Project Name is used to name some of the gener' +
+          'ated documentation.'
+        WordWrap = True
+      end
+      object Label4: TLabel
+        Left = 448
+        Top = 8
+        Width = 152
+        Height = 60
+        Anchors = [akTop, akRight]
+        Caption = 'Properties, Methods, Events, and Fields to include'
+        WordWrap = True
+      end
+      object Label5: TLabel
+        Left = 8
+        Top = 104
+        Width = 423
+        Height = 20
+        Caption = 'Language (This is the language used in the documentation.)'
+      end
+      object Label7: TLabel
+        Left = 11
+        Top = 248
+        Width = 557
+        Height = 20
+        Caption = 
+          'Output Directory (This is the directory where the documentation ' +
+          'will be created.)'
+      end
+      object Label10: TLabel
+        Left = 119
+        Top = 427
+        Width = 441
+        Height = 60
+        Caption = 
+          'Message Level (This controls what sort of messages will apear on' +
+          ' the Generate tab when the documentation is created.  The higher' +
+          ' the number, the more messages will be shown.)'
+        WordWrap = True
+      end
+      object Label11: TLabel
+        Left = 280
+        Top = 500
+        Width = 87
+        Height = 20
+        Caption = 'Output Type'
+      end
+      object btnIntroduction: TButton
+        Left = 584
+        Top = 336
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 7
+        OnClick = btnIntroductionClick
+      end
+      object Label13: TLabel
+        Left = 8
+        Top = 312
+        Width = 85
+        Height = 20
+        Caption = 'Introduction'
+      end
+      object edConclusion: TEdit
+        HelpKeyword = 'HelpGeneratorCLX#Conclusion'
+        Left = 8
+        Top = 392
+        Width = 561
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 8
+        OnChange = edProjectNameChange
+      end
+      object btnConclusion: TButton
+        Left = 584
+        Top = 392
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 9
+        OnClick = btnConclusionClick
+      end
+      object Label14: TLabel
+        Left = 8
+        Top = 368
+        Width = 78
+        Height = 20
+        Caption = 'Conclusion'
+      end
+      object edTitle: TEdit
+        HelpKeyword = 'HelpGeneratorCLX#Title'
+        Left = 8
+        Top = 208
+        Width = 659
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 3
+        OnChange = comboLanguagesChange
+      end
+      object Label17: TLabel
+        Left = 8
+        Top = 184
+        Width = 29
+        Height = 20
+        Caption = 'Title'
+      end
+      object edIntroduction: TEdit
+        HelpKeyword = 'HelpGeneratorCLX#Introduction'
+        Left = 8
+        Top = 336
+        Width = 558
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 6
+        OnChange = edProjectNameChange
+      end
+      object edBrowser: TEdit
+        HelpKeyword = 'HelpGeneratorCLX#Output_Directory'
+        Left = 8
+        Top = 552
+        Width = 561
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 21
+        OnChange = edProjectNameChange
+      end
+      object Button1: TButton
+        Left = 584
+        Top = 552
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 22
+        OnClick = Button1Click
+      end
+      object Label19: TLabel
+        Left = 8
+        Top = 528
+        Width = 123
+        Height = 20
+        Caption = 'Browser Location'
+      end
+    end
+    object tabMoreOptions: TTabSheet
+      HelpKeyword = 'HelpGeneratorCLX#More_Options_Tab'
+      Caption = 'More Options'
+      ImageIndex = 5
+      object Label8: TLabel
+        Left = 8
+        Top = 8
+        Width = 394
+        Height = 20
+        Caption = 'Header (This text will appear at the top of the web page)'
+      end
+      object memoHeader: TMemo
+        HelpKeyword = 'HelpGeneratorCLX#Header'
+        Left = 8
+        Top = 32
+        Width = 657
+        Height = 89
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 0
+        OnChange = edProjectNameChange
+      end
+      object Label9: TLabel
+        Left = 8
+        Top = 128
+        Width = 415
+        Height = 20
+        Caption = 'Footer (This text will appear at the bottom of the web page)'
+      end
+      object memoFooter: TMemo
+        HelpKeyword = 'HelpGeneratorCLX#Footer'
+        Left = 8
+        Top = 152
+        Width = 657
+        Height = 89
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 1
+        OnChange = edProjectNameChange
+      end
+      object cbUseGraphVizUses: TCheckBox
+        HelpKeyword = 'HelpGeneratorCLX#GraphVizUses'
+        Left = 8
+        Top = 256
+        Width = 585
+        Height = 31
+        Caption = 'Create and Use GraphViz Uses Diagram'
+        TabOrder = 2
+        OnClick = cbUseGraphVizClick
+      end
+      object cbUseGraphVizClasses: TCheckBox
+        HelpKeyword = 'HelpGeneratorCLX#GraphVizClasses'
+        Left = 8
+        Top = 288
+        Width = 529
+        Height = 31
+        Caption = 'Create and Use GraphViz Classes Diagram'
+        TabOrder = 3
+        OnClick = cbUseGraphVizClick
+      end
+      object Label15: TLabel
+        Left = 8
+        Top = 320
+        Width = 260
+        Height = 20
+        Caption = 'Location of GraphViz "Dot" Program.'
+      end
+      object edGraphVizDotLocation: TEdit
+        HelpKeyword = 'HelpGeneratorCLX#Location_of_GraphViz_Dot_Program'
+        Left = 8
+        Top = 344
+        Width = 569
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        Color = clButton
+        Enabled = False
+        TabOrder = 4
+        OnChange = edGraphVizDotLocationChange
+      end
+      object btnGraphViz: TButton
+        Left = 584
+        Top = 344
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        Enabled = False
+        TabOrder = 5
+        OnClick = btnGraphVizClick
+      end
+      object rgLineBreakQuality: TRadioGroup
+        HelpKeyword = 'HelpGeneratorCLX#Line_Breaks'
+        Left = 8
+        Top = 376
+        Width = 113
+        Height = 81
+        Items.Strings = (
+          'strict'
+          'sloppy')
+        Caption = 'Line Breaks'
+        Enabled = False
+        ItemIndex = 0
+        TabOrder = 6
+        OnClick = comboLanguagesChange
+      end
+      object memoHyphenatedWords: TMemo
+        HelpKeyword = 'HelpGeneratorCLX#Hyph-en-at-ed_Words'
+        Left = 128
+        Top = 408
+        Width = 539
+        Height = 174
+        Anchors = [akLeft, akTop, akRight, akBottom]
+        Color = clButton
+        Enabled = False
+        TabOrder = 7
+        WordWrap = False
+        OnChange = comboLanguagesChange
+      end
+      object Label16: TLabel
+        Left = 128
+        Top = 376
+        Width = 355
+        Height = 20
+        Caption = 'Hyph-en-at-ed Words (only English letters allowed)'
+      end
+      object Label18: TLabel
+        Left = 376
+        Top = 256
+        Width = 181
+        Height = 20
+        Caption = 'LaTeX Graphics Package'
+      end
+      object comboLatexGraphics: TComboBox
+        Left = 376
+        Top = 280
+        Width = 137
+        Height = 28
+        Style = csDropDownList
+        Enabled = False
+        ItemHeight = 22
+        Items.Strings = (
+          'None'
+          'PDF'
+          'DVI')
+        ItemIndex = 0
+        TabOrder = 13
+        Text = 'None'
+        OnChange = edProjectNameChange
+      end
+    end
+    object tabSourceFiles: TTabSheet
+      HelpKeyword = 'HelpGeneratorCLX#Source_Files_Tab'
+      Caption = 'Source Files'
+      ImageIndex = 3
+      object Panel4: TPanel
+        Left = 0
+        Top = 0
+        Width = 678
+        Height = 113
+        Align = alTop
+        TabOrder = 0
+        object Label2: TLabel
+          Left = 8
+          Top = 8
+          Width = 649
+          Height = 60
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'Add the full paths of all the source files you wish to include i' +
+            'n your project. The directories for each file will be automatica' +
+            'lly added to the "Include" directories if you use the "Browse" b' +
+            'utton to add the source files.'
+          WordWrap = True
+        end
+      end
+      object memoFiles: TMemo
+        HelpKeyword = 'HelpGeneratorCLX#Source_Files_Tab'
+        Left = 0
+        Top = 113
+        Width = 678
+        Height = 433
+        Align = alClient
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+        OnChange = edProjectNameChange
+      end
+      object Panel5: TPanel
+        Left = 0
+        Top = 546
+        Width = 678
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        object btnBrowseSourceFiles: TButton
+          Left = 8
+          Top = 8
+          Width = 97
+          Height = 25
+          Caption = 'Browse'
+          TabOrder = 0
+          OnClick = btnBrowseSourceFilesClick
+        end
+      end
+    end
+    object tabIncludeDirectories: TTabSheet
+      HelpKeyword = 'HelpGeneratorCLX#Include_Directories_Tab'
+      Caption = 'Include Directories'
+      ImageIndex = 4
+      object Panel6: TPanel
+        Left = 0
+        Top = 0
+        Width = 678
+        Height = 113
+        Align = alTop
+        TabOrder = 0
+        object Label3: TLabel
+          Left = 6
+          Top = 8
+          Width = 653
+          Height = 40
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'If any of your source files have include files, you need to give' +
+            ' the directory where those include files are located.  (See the ' +
+            'Delphi help on $I if you don'#39't know what and include file is.)'
+          WordWrap = True
+        end
+      end
+      object memoIncludeDirectories: TMemo
+        HelpKeyword = 'HelpGeneratorCLX#Include_Directories_Tab'
+        Left = 0
+        Top = 113
+        Width = 678
+        Height = 433
+        Align = alClient
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+        OnChange = edProjectNameChange
+      end
+      object Panel7: TPanel
+        Left = 0
+        Top = 546
+        Width = 678
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        object btnBrowseIncludeDirectory: TButton
+          Left = 8
+          Top = 8
+          Width = 97
+          Height = 25
+          Caption = 'Browse'
+          TabOrder = 0
+          OnClick = btnBrowseIncludeDirectoryClick
+        end
+      end
+    end
+    object tabDefines: TTabSheet
+      HelpKeyword = 'HelpGeneratorCLX#Defines_Tab'
+      Caption = 'Defines'
+      ImageIndex = 4
+      object Panel3: TPanel
+        Left = 0
+        Top = 0
+        Width = 678
+        Height = 113
+        Align = alTop
+        TabOrder = 0
+        object Label12: TLabel
+          Left = 6
+          Top = 8
+          Width = 650
+          Height = 60
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'If any "conditonal defines" are used in your program, list them ' +
+            'here.  Your compiler may have some "conditional defines" already' +
+            ' defined.  For example "VER150" is predefined in Delphi 7.  See ' +
+            'the help on "conditional compilation" in your compiler for more ' +
+            'information.'
+          WordWrap = True
+        end
+      end
+      object memoDefines: TMemo
+        HelpKeyword = 'HelpGeneratorCLX#Defines_Tab'
+        Left = 0
+        Top = 113
+        Width = 678
+        Height = 474
+        Align = alClient
+        Lines.Strings = (
+          'VER150'
+          'MSWINDOWS'
+          'WIN32'
+          'CPU386'
+          'CONDITIONALEXPRESSIONS')
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+        OnChange = edProjectNameChange
+      end
+    end
+    object tabGenerate: TTabSheet
+      HelpKeyword = 'HelpGeneratorCLX#Generate_Tab'
+      Caption = 'Generate'
+      object memoMessages: TMemo
+        HelpKeyword = 'HelpGeneratorCLX#Generate_Tab'
+        Left = 0
+        Top = 113
+        Width = 678
+        Height = 433
+        Align = alClient
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 546
+        Width = 678
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        object btnGenerate: TButton
+          Left = 8
+          Top = 8
+          Width = 201
+          Height = 25
+          Caption = 'Generate Documentation'
+          TabOrder = 0
+          OnClick = btnGenerateClick
+        end
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 678
+        Height = 113
+        Align = alTop
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 8
+          Top = 5
+          Width = 651
+          Height = 100
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'When you click the "Generate Documentation" button, Help Generat' +
+            'or will begin to process your input files and create documentati' +
+            'on for them.  Messages describing what is happening will appear ' +
+            'in the area below.  You can control how many messages appear usi' +
+            'ng the "Message Level" on the Options tab. If you are generating' +
+            ' web pages, your web browser will display the web pages that wer' +
+            'e generated, when they have been created.'
+          WordWrap = True
+        end
+      end
+    end
+  end
+  object PasDoc1: TPasDoc
+    OnWarning = PasDoc1Warning
+    OnMessage = PasDoc1Warning
+    StarStyleOnly = False
+    MarkerOptional = True
+    Generator = HtmlDocGenerator
+    ShowVisibilities = []
+    ImplicitVisibility = ivImplicit
+    Left = 168
+    Top = 208
+  end
+  object HtmlDocGenerator: THTMLDocGenerator
+    AutoAbstract = False
+    LinkLook = llStripped
+    WriteUsesClause = True
+    CSS = 
+      'body { font-family: Verdana,Arial; '#13#10'  color: black; background-' +
+      'color: white; '#13#10'  font-size: 12px; }'#13#10'body.navigationframe { fon' +
+      't-family: Verdana,Arial; '#13#10'  color: white; background-color: #78' +
+      '7878; '#13#10'  font-size: 12px; }'#13#10#13#10'img { border:0px; }'#13#10#13#10'a:link {c' +
+      'olor:#C91E0C; text-decoration: none; }'#13#10'a:visited {color:#7E5C31' +
+      '; text-decoration: none; }'#13#10'a:hover {text-decoration: underline;' +
+      ' }'#13#10'a:active {text-decoration: underline; }'#13#10#13#10'a.navigation:link' +
+      ' { color: white; text-decoration: none; font-size: 12px;}'#13#10'a.nav' +
+      'igation:visited { color: white; text-decoration: none; font-size' +
+      ': 12px;}'#13#10'a.navigation:hover { color: white; font-weight: bold; ' +
+      #13#10'  text-decoration: none; font-size: 12px; }'#13#10'a.navigation:acti' +
+      've { color: white; text-decoration: none; font-size: 12px;}'#13#10#13#10'a' +
+      '.bold:link {color:#C91E0C; text-decoration: none; font-weight:bo' +
+      'ld; }'#13#10'a.bold:visited {color:#7E5C31; text-decoration: none; fon' +
+      't-weight:bold; }'#13#10'a.bold:hover {text-decoration: underline; font' +
+      '-weight:bold; }'#13#10'a.bold:active {text-decoration: underline; font' +
+      '-weight:bold; }'#13#10#13#10'a.section {color: green; text-decoration: non' +
+      'e; font-weight: bold; }'#13#10'a.section:hover {color: green; text-dec' +
+      'oration: underline; font-weight: bold; }'#13#10#13#10'ul.useslist a:link {' +
+      'color:#C91E0C; text-decoration: none; font-weight:bold; }'#13#10'ul.us' +
+      'eslist a:visited {color:#7E5C31; text-decoration: none; font-wei' +
+      'ght:bold; }'#13#10'ul.useslist a:hover {text-decoration: underline; fo' +
+      'nt-weight:bold; }'#13#10'ul.useslist a:active {text-decoration: underl' +
+      'ine; font-weight:bold; }'#13#10#13#10'ul.hierarchy { list-style-type:none;' +
+      ' }'#13#10'ul.hierarchylevel { list-style-type:none; }'#13#10#13#10'p.unitlink a:' +
+      'link {color:#C91E0C; text-decoration: none; font-weight:bold; }'#13 +
+      #10'p.unitlink a:visited {color:#7E5C31; text-decoration: none; fon' +
+      't-weight:bold; }'#13#10'p.unitlink a:hover {text-decoration: underline' +
+      '; font-weight:bold; }'#13#10'p.unitlink a:active {text-decoration: und' +
+      'erline; font-weight:bold; }'#13#10#13#10'tr.list { background: #FFBF44; }'#13 +
+      #10'tr.list2 { background: #FFC982; }'#13#10'tr.listheader { background: ' +
+      '#C91E0C; color: white; }'#13#10#13#10'table { border-spacing:2px; padding:' +
+      '4px; width:100%; }'#13#10#13#10'table.markerlegend { width:auto; }'#13#10'table.' +
+      'markerlegend td.legendmarker { text-align:center; }'#13#10#13#10'table.sec' +
+      'tions { background:white; }'#13#10'table.sections td {background:light' +
+      'gray; }'#13#10#13#10'table.summary td.itemcode { width:100%; }'#13#10'table.deta' +
+      'il td.itemcode { width:100%; }'#13#10#13#10'td { vertical-align:top; paddi' +
+      'ng:4px; }'#13#10#13#10'td.itemname {white-space:nowrap; }'#13#10'td.itemunit {wh' +
+      'ite-space:nowrap; }'#13#10'td.itemdesc { width:100%; }'#13#10#13#10'div.nodescri' +
+      'ption {color:red;}'#13#10'dl.parameters {;}'#13#10'dl.parameters dt {color:b' +
+      'lue;}'#13#10'dl.parameters dd {;}'#13#10#13#10'/* Style applied to Pascal code i' +
+      'n documentation '#13#10'   (e.g. produced by @longcode tag) } */'#13#10'span' +
+      '.pascal_string { color: #000080; }'#13#10'span.pascal_keyword { font-w' +
+      'eight: bolder; }'#13#10'span.pascal_comment { color: #000080; font-sty' +
+      'le: italic; }'#13#10'span.pascal_compiler_comment { color: #008000; }'#13 +
+      #10'span.pascal_numeric { }'#13#10'span.pascal_hex { }'#13#10#13#10'p.hint_directiv' +
+      'e { color: red; }'#13#10#13#10'input#search_text { }'#13#10'input#search_submit_' +
+      'button { }'#13#10#13#10'acronym.mispelling { background-color: #ffa; }'#13#10
+    UseTipueSearch = True
+    Left = 192
+    Top = 208
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = 'hgs'
+    Filter = '*.hgs|*.hgs'
+    FilterIndex = 0
+    Height = 0
+    Title = 'Save'
+    Width = 0
+    Left = 220
+    Top = 203
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'Pascal Files (*.pas, *.pp, *.PAS)|*.pas;*.pp;*.PAS'
+    FilterIndex = 0
+    Options = [ofAllowMultiSelect, ofEnableSizing, ofHideReadOnly]
+    Height = 0
+    Width = 0
+    Left = 244
+    Top = 203
+  end
+  object OpenDialog2: TOpenDialog
+    Filter = '*.hgs|*.hgs'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 276
+    Top = 203
+  end
+  object MainMenu1: TMainMenu
+    Left = 140
+    Top = 211
+    object miFile: TMenuItem
+      Caption = '&File'
+      object New1: TMenuItem
+        Caption = '&New'
+        OnClick = New1Click
+      end
+      object Open1: TMenuItem
+        Caption = '&Open'
+        OnClick = Open1Click
+      end
+      object Save1: TMenuItem
+        Caption = '&Save'
+        OnClick = Save1Click
+      end
+      object Exit1: TMenuItem
+        Caption = '&Exit'
+        OnClick = Exit1Click
+      end
+    end
+    object miHelp: TMenuItem
+      Caption = 'Help'
+      object Help2: TMenuItem
+        Caption = 'Help'
+        OnClick = Help2Click
+      end
+      object About1: TMenuItem
+        Caption = 'About'
+        OnClick = About1Click
+      end
+    end
+  end
+  object odExtraFiles: TOpenDialog
+    Filter = 'Text Files (*.txt)|*.txt|All Files (*.*)|*.*'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 308
+    Top = 202
+  end
+  object TexDocGenerator: TTexDocGenerator
+    AutoAbstract = False
+    LinkLook = llStripped
+    Left = 332
+    Top = 202
+  end
+  object HTMLHelpDocGenerator: THTMLHelpDocGenerator
+    AutoAbstract = False
+    LinkLook = llStripped
+    CSS = 
+      'body { font-family: Verdana,Arial; '#13#10'  color: black; background-' +
+      'color: white; '#13#10'  font-size: 12px; }'#13#10'body.navigationframe { fon' +
+      't-family: Verdana,Arial; '#13#10'  color: white; background-color: #78' +
+      '7878; '#13#10'  font-size: 12px; }'#13#10#13#10'img { border:0px; }'#13#10#13#10'a:link {c' +
+      'olor:#C91E0C; text-decoration: none; }'#13#10'a:visited {color:#7E5C31' +
+      '; text-decoration: none; }'#13#10'a:hover {text-decoration: underline;' +
+      ' }'#13#10'a:active {text-decoration: underline; }'#13#10#13#10'a.navigation:link' +
+      ' { color: white; text-decoration: none; font-size: 12px;}'#13#10'a.nav' +
+      'igation:visited { color: white; text-decoration: none; font-size' +
+      ': 12px;}'#13#10'a.navigation:hover { color: white; font-weight: bold; ' +
+      #13#10'  text-decoration: none; font-size: 12px; }'#13#10'a.navigation:acti' +
+      've { color: white; text-decoration: none; font-size: 12px;}'#13#10#13#10'a' +
+      '.bold:link {color:#C91E0C; text-decoration: none; font-weight:bo' +
+      'ld; }'#13#10'a.bold:visited {color:#7E5C31; text-decoration: none; fon' +
+      't-weight:bold; }'#13#10'a.bold:hover {text-decoration: underline; font' +
+      '-weight:bold; }'#13#10'a.bold:active {text-decoration: underline; font' +
+      '-weight:bold; }'#13#10#13#10'a.section {color: green; text-decoration: non' +
+      'e; font-weight: bold; }'#13#10'a.section:hover {color: green; text-dec' +
+      'oration: underline; font-weight: bold; }'#13#10#13#10'ul.useslist a:link {' +
+      'color:#C91E0C; text-decoration: none; font-weight:bold; }'#13#10'ul.us' +
+      'eslist a:visited {color:#7E5C31; text-decoration: none; font-wei' +
+      'ght:bold; }'#13#10'ul.useslist a:hover {text-decoration: underline; fo' +
+      'nt-weight:bold; }'#13#10'ul.useslist a:active {text-decoration: underl' +
+      'ine; font-weight:bold; }'#13#10#13#10'ul.hierarchy { list-style-type:none;' +
+      ' }'#13#10'ul.hierarchylevel { list-style-type:none; }'#13#10#13#10'p.unitlink a:' +
+      'link {color:#C91E0C; text-decoration: none; font-weight:bold; }'#13 +
+      #10'p.unitlink a:visited {color:#7E5C31; text-decoration: none; fon' +
+      't-weight:bold; }'#13#10'p.unitlink a:hover {text-decoration: underline' +
+      '; font-weight:bold; }'#13#10'p.unitlink a:active {text-decoration: und' +
+      'erline; font-weight:bold; }'#13#10#13#10'tr.list { background: #FFBF44; }'#13 +
+      #10'tr.list2 { background: #FFC982; }'#13#10'tr.listheader { background: ' +
+      '#C91E0C; color: white; }'#13#10#13#10'table { border-spacing:2px; padding:' +
+      '4px; width:100%; }'#13#10#13#10'table.markerlegend { width:auto; }'#13#10'table.' +
+      'markerlegend td.legendmarker { text-align:center; }'#13#10#13#10'table.sec' +
+      'tions { background:white; }'#13#10'table.sections td {background:light' +
+      'gray; }'#13#10#13#10'table.summary td.itemcode { width:100%; }'#13#10'table.deta' +
+      'il td.itemcode { width:100%; }'#13#10#13#10'td { vertical-align:top; paddi' +
+      'ng:4px; }'#13#10#13#10'td.itemname {white-space:nowrap; }'#13#10'td.itemunit {wh' +
+      'ite-space:nowrap; }'#13#10'td.itemdesc { width:100%; }'#13#10#13#10'div.nodescri' +
+      'ption {color:red;}'#13#10'dl.parameters {;}'#13#10'dl.parameters dt {color:b' +
+      'lue;}'#13#10'dl.parameters dd {;}'#13#10#13#10'/* Style applied to Pascal code i' +
+      'n documentation '#13#10'   (e.g. produced by @longcode tag) } */'#13#10'span' +
+      '.pascal_string { color: #000080; }'#13#10'span.pascal_keyword { font-w' +
+      'eight: bolder; }'#13#10'span.pascal_comment { color: #000080; font-sty' +
+      'le: italic; }'#13#10'span.pascal_compiler_comment { color: #008000; }'#13 +
+      #10'span.pascal_numeric { }'#13#10'span.pascal_hex { }'#13#10#13#10'p.hint_directiv' +
+      'e { color: red; }'#13#10#13#10'input#search_text { }'#13#10'input#search_submit_' +
+      'button { }'#13#10#13#10'acronym.mispelling { background-color: #ffa; }'#13#10
+    Left = 356
+    Top = 202
+  end
+  object odDotLocation: TOpenDialog
+    Filter = '(dot.exe)|dot.exe'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 380
+    Top = 202
+  end
+  object BrowserDialog: TOpenDialog
+    Filter = 'Programs (*.exe)|*.exe'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 412
+    Top = 208
+  end
+end

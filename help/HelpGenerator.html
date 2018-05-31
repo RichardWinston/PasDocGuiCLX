@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Help Generator (CLX Version)</title>
+  <meta content="Richard Winston" name="author">
+</head>
+<body>
+<h1>Help Generator (CLX Version)</h1>
+by Richard B. Winston: <a href="mailto:rbwinst@usgs.gov">rbwinst@usgs.gov</a><br>
+<br>
+<ul>
+  <li><a href="#Getting_Started">Getting Started</a></li>
+  <li><a href="HelpGenerator.html#Source_Files_Tab">Source Files Tab</a></li>
+  <li><a href="#Options_Tab">Options Tab</a></li>
+  <li><a href="#Locations_Tab">Locations Tab</a><br>
+  </li>
+  <li><a href="#Web_Options_Tab">Web Options Tab</a></li>
+  <li><a href="#Latex_Options">Latex Options</a></li>
+  <li><a href="#GraphViz_Options_Tab">GraphViz Options Tab</a></li>
+  <li><a href="#Spell_Checking_Tab">Spell Checking Tab</a></li>
+  <li><a href="#Include_Directories_Tab">Include Directories Tab</a></li>
+  <li><a href="#Defines_Tab">Defines Tab</a></li>
+  <li><a href="#Generate_Tab">Generate Tab</a></li>
+</ul>
+<h2><a name="Getting_Started"></a>Getting Started</h2>
+<p>Help Generator is designed to generate source-code documentation for
+programs written in Object Pascal.&nbsp; <a
+ href="http://www.borland.com/">Delphi</a>, <a
+ href="http://www.borland.com/">Kylix</a>, and <a
+ href="http://www.lazarus.freepascal.org/">Lazarus</a> are all used to
+create programs with Object Pascal.&nbsp; If you are writing
+components, or open-source programs with one of those IDE's, Help
+Generator can help you create documentation for your project.&nbsp; It
+is also useful for create documentation for your program for your own
+internal use.
+</p>
+<p>As you will see, Help Generator is not intended to provide
+documentation for users of closed-source programs.&nbsp; If that is
+what you want to do, there are many other programs you can use for
+that purpose.
+</p>
+<p>To use Help Generator, you need to insert comments in the <code><span
+ style="font-weight: bold;">interface</span></code> section of your
+source code files.&nbsp; Generally the comments must immediately
+precede the item that they document.&nbsp; Help Generator extracts
+those comments and creates the documentation from them.&nbsp; The
+documentation can be either a series of web pages, an html-help project
+or a <a href="http://www.latex-project.org/">LaTeX</a> file.&nbsp;
+With a Latex file you can create files in other formats such as PDF, or
+Rich-Text format (rtf).&nbsp; (See <a
+ href="http://www.texniccenter.org/front_content.php">TeXnicCenter</a>
+and <a href="http://latex2rtf.sourceforge.net/">Latex2Rtf</a>.)<br>
+</p>
+<p>In your source-code comments, you can use a number of special tags
+to create cross-links or to control the appearance of the generated
+documentation.&nbsp; The supported tags are documented at <a
+ href="http://pasdoc.sipsolutions.net/SupportedTags">http://pasdoc.sipsolutions.net/SupportedTags</a>.<br>
+</p>
+<p>Once you have put the comments in your source code, you are ready to
+run to Help Generator.&nbsp; The most important things you need to do
+are to<br>
+</p>
+<ol>
+  <li>choose the source code files to include, and</li>
+  <li>choose the output type.</li>
+</ol>
+<p>Once you have done that, you are ready to go to the Generate tab,
+and generate the documentation.&nbsp; However, there are a few more
+things that you might want to do to customize your documentation.&nbsp;
+The remainder of this page describes those options.<br>
+</p>
+<p>You can save your settings for a project by selecting
+"File|Save".&nbsp; Later on you can retrieve the projecting settings
+again by selecting "File|Open".<br>
+</p>
+<h2><a name="Source_Files_Tab"></a>Source Files Tab</h2>
+<p>Enter the names of the source code files that you want Help
+Generator to process here or click the Browse button and select them.</p>
+<h2><a name="Options_Tab"></a>Options Tab</h2>
+<h3><a name="Project_Name"></a>Project Name<br>
+</h3>
+<p>The Project Name is used to help determine the name of the output
+file or files.&nbsp; For example if the project name is "MyDoc" and the
+output type is LaTeX, the LaTeX file that is generated would be
+MyDoc.tex.</p>
+<h3><a name="Language"></a>Language</h3>
+<p>There are a number of places where Help Generator writes predefined
+phrases such as "All Units" in the documentation.&nbsp; Those phrases
+have been translated into a variety of languages.&nbsp; To ensure that
+the language for those phrases matches the language used in the
+comments, choose the correct language</p>
+<h3><a name="Properties_Methods_Events_and_Fields"></a>Properties,
+Methods, Events, and Fields to Include</h3>
+<p>These check boxes controls which properties, methods, events, and
+fields to include based on their visibility.&nbsp; For example, if you
+are documenting a component, you might want to include only the
+published and public properties because those are the ones to which the
+users of the component will have access.&nbsp; However, it would still
+be easy to generate another version of the documentation for your own
+use that included the protected and private properties, methods,
+events, and fields as well.<br>
+</p>
+<p>"Implicit" means the fields at the beginning of a class declaration
+before any visibility specifier.&nbsp; "Implicit" fields will be either
+public or published depending on the {$M+} or {$M-} compiler option.</p>
+<p></p>
+<h3><a name="Title"></a>Title</h3>
+<p>The Title is the title that will appear on the title page of the
+LaTeX documentation or as the caption of the web browser <br>
+</p>
+<br>
+<h3><a name="Message_Level"></a>Message Level</h3>
+<p>When Help Generator is creating the documentation, a number of
+informative messages are generated.&nbsp; Some are error messages or
+warnings.&nbsp; Others are just informative messages.&nbsp; When the
+Message Level is set to 1, only errors and warning messages will be
+displayed.&nbsp; When the Message Level is set to 2, a message will be
+shown for each source code file that is processed as well as errors and
+warnings.&nbsp; As the Message Level increases to 6, the number of
+informative messages increases.<br>
+</p>
+<h3><a name="Output_Type"></a>Output Type</h3>
+<p>The Output Type determines whether the generated documentation will
+be a series of web pages, an html-help project, an ordinary LaTeX file
+or a LaTeX for use with Latex2Rtf.<br>
+</p>
+<h2><a name="Locations_Tab"></a>Locations Tab</h2>
+<h3><a name="Output_Directory"></a>Output Directory</h3>
+<p>The Output Directory is the location where the documentation should
+be
+created.&nbsp; If you don't specify the location, the directory
+containing the first source code file you select will be chosen as the
+location to create the documentation.&nbsp; If you specify a directory
+that does not exist, Help Generator will try to create it for you.</p>
+<h3><a name="Introduction"></a>Introduction</h3>
+<p>If you want to include an introduction to your documentation, write
+it in a text file and specify its location here. Help Generator can
+process it in much the same way that it does source code files.</p>
+<h3><a name="Conclusion"></a>Conclusion</h3>
+<p>If you want to include a conclusion to your documentation, write it
+in a text file and specify its location here. Help Generator can
+process it in much the same way that it does source code files<br>
+</p>
+<h3><a name="Browser_Location"></a>Browser Location</h3>
+This is the location of the web browser that you prefer to use for
+viewing web pages generated by Help Generator.&nbsp; If left blank, the
+default browser for your computer will be used.<br>
+<h3><a name="Pasdoc_Consol_Location"></a>Pasdoc Consol Location</h3>
+This is the location of the consol program <span
+ style="font-weight: bold;">pasdoc.exe</span>.&nbsp; Pasdoc.exe is
+included with Help Generator.&nbsp; It is Pasdoc that actually creates
+the documentation for your source code files.<br>
+<h3><a name="Html_Help_Contents_File"></a>Html Help Contents File</h3>
+If you are creating a Html Help file, you can specy the Html Help
+Contents File to use with the Html Help Project.&nbsp; If you don't
+specify it, Help Generator will create a default one for you.<br>
+<br>
+<p>
+</p>
+<h2><a name="Web_Options_Tab"></a>Web Options Tab<br>
+</h2>
+<h3><a name="Header"></a>Header</h3>
+<p>If you are creating a web page as your output, the "Header" text
+will appear at the top of the web page.</p>
+<h3><a name="Footer"></a>Footer</h3>
+<p>If you are creating a web page as your output, the "Footer" text
+will appear at the bottom of the web page.<br>
+</p>
+<h2><a name="Latex_Options"></a>Latex Options</h2>
+<p>
+</p>
+<h3><a name="Line_Breaks"></a>Line Breaks</h3>
+<p>If you are generating LaTeX output, you can use this option to help
+control the way line breaks are generated.&nbsp; If you choose the
+"strict" option, TeX (the formatting engine for LaTeX files)&nbsp; may
+extend a line past the normal page margin in order to prevent too many
+spaces from appearing between words.&nbsp; If you choose the "sloppy"
+option, Tex will prevent words from extending past the page margin even
+if to do so it must insert too many spaces between words.</p>
+<h3><a name="Hyph-en-at-ed_Words"></a>Hyph-en-at-ed Words</h3>
+<p>
+If you are generating LaTeX output, you can use this option to help
+control the way line breaks are generated.&nbsp; Usually the reason
+LaTeX has problems processing a line is that it contains a long word
+near the end that it doesn't know how to hypenate.&nbsp; You can tell
+it how to hypenate words by listing them here.&nbsp; Put hyphens in the
+words wherever a hypen is allowed to appear.</p>
+<h2><a name="GraphViz_Options_Tab"></a>GraphViz Options Tab</h2>
+<h3><a name="GraphVizUses"></a>Create and Use GraphVizUses Diagram</h3>
+<p>GraphViz is a a set of open-source programs for creating
+diagrams.&nbsp; Help Generator can create an input file for the "dot"
+program in GraphViz that shows how Object Pascal units use each
+other.&nbsp; On Windows, Help Generator will run the "dot" program for
+you if you
+choose this option. On Linux, you must run dot yourself from the
+command line.<br>
+</p>
+<p>Note: the images can get very <big style="font-weight: bold;">BIG</big>
+so you may need to instruct users to set up their web browser's
+preferences so that it does not automatically resize the figure.&nbsp;
+Also sometimes the image that is generated might be too big to be
+displayed properly in your web browser.&nbsp; If so, the image may
+appear blank.</p>
+<p></p>
+<p>You can get GraphViz from <a href="http://www.graphviz.org/">http://www.graphviz.org/</a>.<br>
+</p>
+<h3><a name="GraphVizClasses"></a>Create and use GraphViz Classes
+diagram</h3>
+<p>GraphViz is a a set of open-source programs for creating
+diagrams.&nbsp;
+Help Generator can create an input file for the "dot" program in
+GraphViz that shows the class hierarchy in your program.&nbsp;&nbsp; On
+Windows, Help Generator will run the "dot" program for you if you
+choose this option. On Linux, you must run dot yourself from the
+command line.<br>
+</p>
+<p>Note: the images can get very <big style="font-weight: bold;">BIG</big>
+so you may need to instruct users to set up their web browser's
+preferences so that it does not automatically resize the figure.&nbsp;
+Also sometimes the image that is generated might be too big to be
+displayed properly in your web browser.&nbsp; If so, the image may
+appear
+blank.</p>
+<p>You can get GraphViz from <a href="http://www.graphviz.org/">http://www.graphviz.org/</a>.<br>
+</p>
+<h3><a name="Location_of_GraphViz_Dot_Program"></a>Location of
+GraphViz "Dot" Program</h3>
+<p>If you chose either of the previous two options, you must tell Help
+Generator where the "Dot" program is installed so Help Generator can
+run Dot for you.<br>
+</p>
+<p>Note: the images can get very <big style="font-weight: bold;">BIG</big>
+so you may need to instruct users to set up their web browser's
+preferences so that it does not automatically resize the figure.&nbsp;
+Also sometimes the image that is generated might be too big to be
+displayed properly in your web browser.&nbsp; If so, the image may
+appear
+blank.</p>
+<p>You can get GraphViz from <a href="http://www.graphviz.org/">http://www.graphviz.org/</a>.<br>
+</p>
+<h3>LaTeX Graphics Package</h3>
+If you are generating LaTeX output and use graphics in it (such as the
+graphics generated by GraphViz), you need to specify the LaTeX graphics
+package to use.&nbsp; If you are planning to convert your LaTeX file to
+a PDF, use the <span style="font-weight: bold;">PDF </span>option.&nbsp;
+If you are planning to convert it to a DVI file, use the <span
+ style="font-weight: bold;">DVI </span>option.&nbsp; If you are
+planning to convert your LaTeX file to some other format, specify <span
+ style="font-weight: bold;">None </span>and manually edit your LaTeX
+to include the correct graphics package.<br>
+<h3>Required program: GraphViz</h3>
+This edit box gives the URL for GraphViz.&nbsp; You will need to
+install GraphViz if you wish to use the GraphViz Uses or Classes
+diagrams.<br>
+<h2><a name="Spell_Checking_Tab"></a>Spell Checking Tab</h2>
+<h3>Check Spelling</h3>
+Checking this check box causes spell-checking to be activated.&nbsp;
+Spell checking is done by the consol program ASpell.<br>
+<h3>Language</h3>
+Normally, you don't need to specify the language because it is
+automatically selected for you.&nbsp; However, if the automatic
+selection is incorrect, specify the correct language here.<br>
+<h3>Words to Ignore</h3>
+Frequently you will have words that ASpell doesn't recognize as correct
+even though they are correct.&nbsp; Specify words that you want ASpell
+to ignore here.&nbsp; Use one word per line.&nbsp; (Note, when you <a
+ href="#Generate_Tab">generate documentation</a> with spell checking
+activated, a list of all the misspelled words will be listed at the
+bottom of the messages.&nbsp; You can copy that list here if all the
+words in it are spelled correctly.)<br>
+<h3>Required Program: ASpell</h3>
+ASpell is the program that actually does the spell checking for
+PasDoc.&nbsp; See <a
+ href="http://pasdoc.sipsolutions.net/SpellChecking">http://pasdoc.sipsolutions.net/SpellChecking</a>
+for more information.<br>
+<br>
+<h2><a name="Include_Directories_Tab"></a>Include Directories Tab</h2>
+<p>If any of your source files include other files via the include
+directive <span style="font-style: italic;">{$I AFile}</span>, list
+the directories that have the include files here or click the Brows
+button to select them.<br>
+</p>
+<h2><a name="Defines_Tab"></a>Defines Tab</h2>
+<p>If any of your files uses compiler directives such as <span
+ style="font-style: italic;">{$IFDEF AConstant}</span> to control
+compilation, list the constants that are defined here.&nbsp; Help
+Generator will use them to help parse your source code files.<br>
+</p>
+<h2><a name="Generate_Tab"></a>Generate Tab</h2>
+<p>Click the Generate Documentation button to generate the
+documentation for your project.&nbsp; Messages will appear in the memo
+field above the button as the documentation is generated.&nbsp; If
+spell checking is activated, a list of misspelled words will appear at
+the end of the messages.<br>
+</p>
+<br>
+<br>
+<br>
+</body>
+</html>

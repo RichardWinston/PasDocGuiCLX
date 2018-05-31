@@ -1,0 +1,991 @@
+object frmHelpGenerator: TfrmHelpGenerator
+  HelpKeyword = 'HelpGenerator'
+  Left = 260
+  Top = 141
+  Width = 853
+  Height = 540
+  HorzScrollBar.Range = 204
+  ActiveControl = pcMain
+  Caption = 'Help Generator'
+  Color = clBackground
+  Font.Color = clBlack
+  Font.Height = 16
+  Font.Name = 'adobe-helvetica'
+  Font.Pitch = fpVariable
+  Font.Style = []
+  Font.Weight = 40
+  Icon.Data = {
+    0000010001002020100000000000E80200001600000028000000200000004000
+    0000010004000000000080020000000000000000000000000000000000000000
+    000000008000008000000080800080000000800080008080000080808000C0C0
+    C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    000000000000000FF0FF0000000000000000000000000FFFF0FFFF0000000000
+    00000000000FFFFFF0FFFFFF00000000000000000FFFFFFFF0FFFFFFFF000000
+    00000000FFFFFFFFF0FFFFFFFFF0000000000000FFFFFFFFF0FFFFFFFFF00000
+    00000000FFFFFFFFF0FFFFFFFFF0000000000000FFFFFFFFF0FFFFFFFFF00000
+    00000000FFFFFFFFF0FFFFFFFFF0000000000000FFFFFFFFF0FFFFFFFFF00000
+    00000000FFFFFFFFF0FFFFFFFFF0000000000000FFFFFFFFF0FFFFFFFFF00088
+    88888880FFFFFFFFF0FFFFFFFFF0008888888880FFFFFFFFF0FFFFFFFFF00080
+    00888880FFFFFFFFF0FFFFFFFFF0008888888880FFFFFFF00000FFFFFFF00088
+    88888880FFFFF000000000FFFFF0008000000080FFF0000000000000FFF00088
+    88888880F00000000000000000F0008888888880000000000000000000000080
+    0088888880000000000000000000008888888888800000000000000000000088
+    8888888880000000000000000000008000000008800000000000000000000088
+    8888888800000000000000000000008888888880000000000000000000000080
+    0000880000000000000000000000008888888000000000000000000000000000
+    000000000000000000000000000000000000000000000000000000000000FFFF
+    FBFFFFFFE0FFFFFF803FFFFE000FFFF80003FFE00000FFE00000FFE00000FFE0
+    0000FFE00000FFE00000FFE00000FFE000008000000080000000800000008000
+    00008000040080001F0080007FC08001FFF08003FFFC8003778F800377778003
+    76F7800376E7800706FF800F76FF801F76FF803F7777807F778FFFFFFFFF}
+  Menu = MainMenu1
+  ParentFont = False
+  Position = poDefaultPosOnly
+  Scaled = False
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  object Splitter1: TSplitter
+    Left = 201
+    Top = 0
+    Height = 515
+  end
+  object pcMain: TPageControl
+    Left = 204
+    Top = 0
+    Width = 649
+    Height = 515
+    ActivePage = tabOptions
+    Align = alClient
+    Style = tsNoTabs
+    TabOrder = 0
+    OnChange = pcMainChange
+    OnChanging = pcMainChanging
+    OnPageChanging = pcMainPageChanging
+    object tabSourceFiles: TTabSheet
+      HelpKeyword = 'HelpGenerator#Source_Files_Tab'
+      Caption = 'Source Files'
+      ImageIndex = 3
+      object Panel4: TPanel
+        Left = 0
+        Top = 0
+        Width = 641
+        Height = 113
+        Align = alTop
+        TabOrder = 0
+        object Label2: TLabel
+          Left = 8
+          Top = 8
+          Width = 556
+          Height = 60
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'Add the full paths of all the source files you wish to include i' +
+            'n your project. The directories for each file will be automatica' +
+            'lly added to the "Include" directories if you use the "Browse" b' +
+            'utton to add the source files.'
+          WordWrap = True
+        end
+      end
+      object memoFiles: TMemo
+        HelpKeyword = 'HelpGenerator#Source_Files_Tab'
+        Left = 0
+        Top = 113
+        Width = 641
+        Height = 353
+        Align = alClient
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+        OnChange = edProjectNameChange
+      end
+      object Panel5: TPanel
+        Left = 0
+        Top = 466
+        Width = 641
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        object btnBrowseSourceFiles: TButton
+          Left = 8
+          Top = 8
+          Width = 97
+          Height = 25
+          Caption = 'Browse'
+          TabOrder = 0
+          OnClick = btnBrowseSourceFilesClick
+        end
+      end
+    end
+    object tabOptions: TTabSheet
+      HelpKeyword = 'HelpGenerator#Options_Tab'
+      Caption = 'Options'
+      ImageIndex = 2
+      object clbMethodVisibility: TCheckListBox
+        HelpKeyword = 'HelpGenerator#Properties_Methods_Events_and_Fields'
+        Left = 8
+        Top = 384
+        Width = 219
+        Height = 121
+        ItemHeight = 20
+        Items.Strings = (
+          'Published'
+          'Public'
+          'Protected'
+          'Private'
+          'Automated'
+          'Implicit')
+        Rows = 6
+        TabOrder = 1
+        OnClickCheck = clbMethodVisibilityClickCheck
+      end
+      object comboLanguages: TComboBox
+        HelpKeyword = 'HelpGenerator#Language'
+        Left = 8
+        Top = 296
+        Width = 249
+        Height = 28
+        Style = csDropDownList
+        ItemHeight = 22
+        TabOrder = 2
+        OnChange = comboLanguagesChange
+      end
+      object edProjectName: TEdit
+        HelpKeyword = 'HelpGenerator#Project_Name'
+        Left = 8
+        Top = 88
+        Width = 624
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 0
+        OnChange = edProjectNameChange
+      end
+      object seVerbosity: TSpinEdit
+        HelpKeyword = 'HelpGenerator#Message_Level'
+        Left = 8
+        Top = 192
+        Width = 101
+        Height = 28
+        Max = 6
+        TabOrder = 4
+        Value = 2
+        OnChanged = seVerbosityChanged
+      end
+      object comboGenerateFormat: TComboBox
+        HelpKeyword = 'HelpGenerator#Output_Type'
+        Left = 8
+        Top = 136
+        Width = 337
+        Height = 28
+        Style = csDropDownList
+        ItemHeight = 22
+        Items.Strings = (
+          'Generate Web pages'
+          'Generate HML Help Workshop project'
+          'Generate LaTeX'
+          'Generate LaTeX for Latex2Rtf')
+        ItemIndex = 0
+        TabOrder = 5
+        Text = 'Generate Web pages'
+        OnChange = comboGenerateFormatChange
+      end
+      object Label6: TLabel
+        Left = 8
+        Top = 64
+        Width = 625
+        Height = 20
+        Caption = 
+          'Project Name (The Project Name is used to name some of the gener' +
+          'ated documentation.'
+      end
+      object Label4: TLabel
+        Left = 8
+        Top = 336
+        Width = 207
+        Height = 40
+        Caption = 'Properties, Methods, Events, and Fields to include'
+        WordWrap = True
+      end
+      object Label5: TLabel
+        Left = 8
+        Top = 248
+        Width = 241
+        Height = 41
+        Caption = 'Language (This is the language used in the documentation.) '
+        WordWrap = True
+      end
+      object Label10: TLabel
+        Left = 127
+        Top = 179
+        Width = 441
+        Height = 60
+        Caption = 
+          'Message Level (This controls what sort of messages will apear on' +
+          ' the Generate tab when the documentation is created.  The higher' +
+          ' the number, the more messages will be shown.)'
+        WordWrap = True
+      end
+      object Label11: TLabel
+        Left = 360
+        Top = 140
+        Width = 87
+        Height = 20
+        Caption = 'Output Type'
+      end
+      object edTitle: TEdit
+        HelpKeyword = 'HelpGenerator#Title'
+        Left = 8
+        Top = 24
+        Width = 622
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 3
+      end
+      object Label17: TLabel
+        Left = 8
+        Top = 0
+        Width = 29
+        Height = 20
+        Caption = 'Title'
+      end
+      object Label22: TLabel
+        Left = 264
+        Top = 248
+        Width = 188
+        Height = 20
+        Caption = 'Items to sort alphabetically'
+      end
+      object clbSort: TCheckListBox
+        HelpKeyword = 'HelpGenerator#Properties_Methods_Events_and_Fields'
+        Left = 264
+        Top = 280
+        Width = 219
+        Height = 217
+        ItemHeight = 20
+        Items.Strings = (
+          'structures'
+          'constants'
+          'global functions'
+          'types'
+          'variables'
+          'uses-clauses'
+          'record-fields'
+          'non-record-fields'
+          'methods'
+          'properties')
+        Rows = 10
+        TabOrder = 13
+        OnClickCheck = clbMethodVisibilityClickCheck
+      end
+    end
+    object tabLocations: TTabSheet
+      HelpKeyword = 'HelpGenerator#Locations_Tab'
+      Caption = 'Locations'
+      ImageIndex = 8
+      ParentShowHint = False
+      ShowHint = False
+      object Label20: TLabel
+        Left = 8
+        Top = 272
+        Width = 171
+        Height = 20
+        Caption = 'Pasdoc Consol Location'
+      end
+      object Label7: TLabel
+        Left = 11
+        Top = 8
+        Width = 557
+        Height = 20
+        Caption = 
+          'Output Directory (This is the directory where the documentation ' +
+          'will be created.)'
+      end
+      object edOutput: TEdit
+        HelpKeyword = 'HelpGenerator#Output_Directory'
+        Left = 8
+        Top = 40
+        Width = 524
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 2
+        OnChange = edProjectNameChange
+      end
+      object btnBrowseOutputDirectory: TButton
+        Left = 547
+        Top = 42
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 3
+        OnClick = btnBrowseOutputDirectoryClick
+      end
+      object Label13: TLabel
+        Left = 8
+        Top = 80
+        Width = 155
+        Height = 20
+        Caption = 'Introduction (optional)'
+      end
+      object edIntroduction: TEdit
+        HelpKeyword = 'HelpGenerator#Introduction'
+        Left = 8
+        Top = 104
+        Width = 521
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 5
+        OnChange = edProjectNameChange
+      end
+      object btnIntroduction: TButton
+        Left = 547
+        Top = 106
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 6
+        OnClick = btnIntroductionClick
+      end
+      object Label14: TLabel
+        Left = 8
+        Top = 144
+        Width = 148
+        Height = 20
+        Caption = 'Conclusion (optional)'
+      end
+      object edConclusion: TEdit
+        HelpKeyword = 'HelpGenerator#Conclusion'
+        Left = 8
+        Top = 168
+        Width = 524
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 8
+        OnChange = edProjectNameChange
+      end
+      object btnConclusion: TButton
+        Left = 547
+        Top = 170
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 9
+        OnClick = btnConclusionClick
+      end
+      object Label19: TLabel
+        Left = 8
+        Top = 208
+        Width = 123
+        Height = 20
+        Caption = 'Browser Location'
+      end
+      object edBrowser: TEdit
+        HelpKeyword = 'HelpGenerator#Output_Directory'
+        Left = 8
+        Top = 232
+        Width = 524
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 11
+        OnChange = edProjectNameChange
+      end
+      object btnBrower: TButton
+        Left = 547
+        Top = 234
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 12
+        OnClick = btnBrowerClick
+      end
+      object edPasDocConsole: TEdit
+        HelpKeyword = 'HelpGenerator#Output_Directory'
+        Left = 8
+        Top = 296
+        Width = 524
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 13
+        OnChange = edPasDocConsoleChange
+      end
+      object btnPasDocConsole: TButton
+        Left = 547
+        Top = 298
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        TabOrder = 14
+        OnClick = btnBrowerClick
+      end
+      object Label21: TLabel
+        Left = 8
+        Top = 336
+        Width = 238
+        Height = 20
+        Caption = 'Html Help Contents File (optional)'
+      end
+      object edHtmlHelpContents: TEdit
+        HelpKeyword = 'HelpGenerator#Output_Directory'
+        Left = 8
+        Top = 360
+        Width = 524
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        Color = clButton
+        Enabled = False
+        TabOrder = 16
+        OnChange = edHtmlHelpContentsChange
+      end
+      object btnHtmlHelpConents: TButton
+        Left = 547
+        Top = 362
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        Enabled = False
+        TabOrder = 17
+        OnClick = btnHtmlHelpConentsClick
+      end
+    end
+    object tabWebOptions: TTabSheet
+      HelpKeyword = 'HelpGenerator#Web_Options_Tab'
+      Caption = 'Web Options'
+      ImageIndex = 6
+      object Splitter2: TSplitter
+        Left = 0
+        Top = 251
+        Width = 641
+        Height = 3
+        Cursor = crVSplit
+        Align = alTop
+      end
+      object Panel8: TPanel
+        Left = 0
+        Top = 254
+        Width = 641
+        Height = 253
+        Align = alClient
+        TabOrder = 0
+        object memoFooter: TMemo
+          HelpKeyword = 'HelpGenerator#Footer'
+          Left = 8
+          Top = 40
+          Width = 620
+          Height = 201
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          TabOrder = 0
+          OnChange = edProjectNameChange
+        end
+        object Label9: TLabel
+          Left = 8
+          Top = 8
+          Width = 415
+          Height = 20
+          Caption = 'Footer (This text will appear at the bottom of the web page)'
+        end
+      end
+      object Panel9: TPanel
+        Left = 0
+        Top = 0
+        Width = 641
+        Height = 251
+        Align = alTop
+        TabOrder = 1
+        object memoHeader: TMemo
+          HelpKeyword = 'HelpGenerator#Header'
+          Left = 8
+          Top = 32
+          Width = 620
+          Height = 208
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          TabOrder = 0
+          OnChange = edProjectNameChange
+        end
+        object Label8: TLabel
+          Left = 8
+          Top = 8
+          Width = 394
+          Height = 20
+          Caption = 'Header (This text will appear at the top of the web page)'
+        end
+      end
+    end
+    object tabLatexOptions: TTabSheet
+      HelpKeyword = 'HelpGenerator#Latex_Options'
+      Caption = 'Latex Options'
+      Enabled = False
+      ImageIndex = 7
+      object rgLineBreakQuality: TRadioGroup
+        HelpKeyword = 'HelpGenerator#Line_Breaks'
+        Left = 8
+        Top = 8
+        Width = 113
+        Height = 81
+        Items.Strings = (
+          'strict'
+          'sloppy')
+        Caption = 'Line Breaks'
+        ItemIndex = 0
+        TabOrder = 0
+      end
+      object memoHyphenatedWords: TMemo
+        HelpKeyword = 'HelpGenerator#Hyph-en-at-ed_Words'
+        Left = 128
+        Top = 40
+        Width = 502
+        Height = 458
+        Anchors = [akLeft, akTop, akRight, akBottom]
+        Enabled = False
+        TabOrder = 1
+        WordWrap = False
+      end
+      object Label16: TLabel
+        Left = 128
+        Top = 8
+        Width = 355
+        Height = 20
+        Caption = 'Hyph-en-at-ed Words (only English letters allowed)'
+      end
+    end
+    object tabMoreOptions: TTabSheet
+      HelpKeyword = 'HelpGenerator#GraphViz_Options_Tab'
+      Caption = 'GraphViz Options'
+      ImageIndex = 5
+      object cbUseGraphVizUses: TCheckBox
+        HelpKeyword = 'HelpGenerator#GraphVizUses'
+        Left = 8
+        Top = 8
+        Width = 585
+        Height = 31
+        Caption = 'Create and Use GraphViz Uses Diagram'
+        TabOrder = 0
+        OnClick = cbUseGraphVizClick
+      end
+      object cbUseGraphVizClasses: TCheckBox
+        HelpKeyword = 'HelpGenerator#GraphVizClasses'
+        Left = 8
+        Top = 40
+        Width = 529
+        Height = 31
+        Caption = 'Create and Use GraphViz Classes Diagram'
+        TabOrder = 1
+        OnClick = cbUseGraphVizClick
+      end
+      object Label15: TLabel
+        Left = 8
+        Top = 72
+        Width = 260
+        Height = 20
+        Caption = 'Location of GraphViz "Dot" Program.'
+      end
+      object edGraphVizDotLocation: TEdit
+        HelpKeyword = 'HelpGenerator#Location_of_GraphViz_Dot_Program'
+        Left = 8
+        Top = 96
+        Width = 532
+        Height = 28
+        Cursor = crIBeam
+        Anchors = [akLeft, akTop, akRight]
+        Color = clButton
+        Enabled = False
+        TabOrder = 2
+        OnChange = edGraphVizDotLocationChange
+      end
+      object btnGraphViz: TButton
+        Left = 547
+        Top = 96
+        Width = 75
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = 'Browse'
+        Enabled = False
+        TabOrder = 3
+        OnClick = btnGraphVizClick
+      end
+      object Label18: TLabel
+        Left = 376
+        Top = 8
+        Width = 181
+        Height = 20
+        Caption = 'LaTeX Graphics Package'
+      end
+      object comboLatexGraphics: TComboBox
+        Left = 376
+        Top = 32
+        Width = 137
+        Height = 28
+        Style = csDropDownList
+        Enabled = False
+        ItemHeight = 22
+        Items.Strings = (
+          'None'
+          'PDF'
+          'DVI')
+        ItemIndex = 0
+        TabOrder = 6
+        Text = 'None'
+        OnChange = edProjectNameChange
+      end
+      object Label26: TLabel
+        Left = 8
+        Top = 140
+        Width = 203
+        Height = 20
+        Caption = 'Required program: GraphViz'
+      end
+      object edGraphVizUrl: TEdit
+        Left = 224
+        Top = 136
+        Width = 401
+        Height = 28
+        Cursor = crIBeam
+        ReadOnly = True
+        TabOrder = 8
+        Text = 'http://www.research.att.com/sw/tools/graphviz/'
+      end
+    end
+    object tabSpellChecking: TTabSheet
+      HelpKeyword = 'HelpGenerator#Spell_Checking_Tab'
+      Caption = 'Spell Checking'
+      ImageIndex = 9
+      object Panel10: TPanel
+        Left = 0
+        Top = 0
+        Width = 641
+        Height = 81
+        Align = alTop
+        TabOrder = 0
+        object cbCheckSpelling: TCheckBox
+          Left = 8
+          Top = 8
+          Width = 153
+          Height = 31
+          Caption = 'Check Spelling'
+          TabOrder = 0
+          OnClick = cbCheckSpellingClick
+        end
+        object comboSpellLanguages: TComboBox
+          Left = 376
+          Top = 9
+          Width = 209
+          Height = 28
+          Style = csDropDownList
+          Color = clButton
+          Enabled = False
+          ItemHeight = 22
+          TabOrder = 1
+          OnChange = comboSpellLanguagesChange
+        end
+        object Label23: TLabel
+          Left = 296
+          Top = 13
+          Width = 72
+          Height = 20
+          Caption = 'Language'
+        end
+        object Label24: TLabel
+          Left = 8
+          Top = 56
+          Width = 112
+          Height = 20
+          Caption = 'Words to ignore'
+        end
+        object edSpellUrl: TEdit
+          Left = 376
+          Top = 48
+          Width = 249
+          Height = 28
+          Cursor = crIBeam
+          ReadOnly = True
+          TabOrder = 4
+          Text = 'http://aspell.sourceforge.net/'
+        end
+        object Label25: TLabel
+          Left = 184
+          Top = 52
+          Width = 183
+          Height = 20
+          Caption = 'Required Program: ASpell'
+        end
+      end
+      object memoCheckSpellingIgnoreWords: TMemo
+        Left = 0
+        Top = 81
+        Width = 641
+        Height = 426
+        Align = alClient
+        Color = clButton
+        Enabled = False
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        OnChange = memoCheckSpellingIgnoreWordsChange
+      end
+    end
+    object tabIncludeDirectories: TTabSheet
+      HelpKeyword = 'HelpGenerator#Include_Directories_Tab'
+      Caption = 'Include Directories'
+      ImageIndex = 4
+      object Panel6: TPanel
+        Left = 0
+        Top = 0
+        Width = 641
+        Height = 113
+        Align = alTop
+        TabOrder = 0
+        object Label3: TLabel
+          Left = 6
+          Top = 8
+          Width = 536
+          Height = 60
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'If any of your source files have include files, you need to give' +
+            ' the directory where those include files are located.  (See the ' +
+            'Delphi help on $I if you don'#39't know what and include file is.)'
+          WordWrap = True
+        end
+      end
+      object memoIncludeDirectories: TMemo
+        HelpKeyword = 'HelpGenerator#Include_Directories_Tab'
+        Left = 0
+        Top = 113
+        Width = 641
+        Height = 353
+        Align = alClient
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+        OnChange = edProjectNameChange
+      end
+      object Panel7: TPanel
+        Left = 0
+        Top = 466
+        Width = 641
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        object btnBrowseIncludeDirectory: TButton
+          Left = 8
+          Top = 8
+          Width = 97
+          Height = 25
+          Caption = 'Browse'
+          TabOrder = 0
+          OnClick = btnBrowseIncludeDirectoryClick
+        end
+      end
+    end
+    object tabDefines: TTabSheet
+      HelpKeyword = 'HelpGenerator#Defines_Tab'
+      Caption = 'Defines'
+      ImageIndex = 4
+      object Panel3: TPanel
+        Left = 0
+        Top = 0
+        Width = 641
+        Height = 113
+        Align = alTop
+        TabOrder = 0
+        object Label12: TLabel
+          Left = 6
+          Top = 8
+          Width = 612
+          Height = 80
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'If any "conditonal defines" are used in your program, list them ' +
+            'here.  Your compiler may have some "conditional defines" already' +
+            ' defined.  For example "VER150" is predefined in Delphi 7.  See ' +
+            'the help on "conditional compilation" in your compiler for more ' +
+            'information.'
+          WordWrap = True
+        end
+      end
+      object memoDefines: TMemo
+        HelpKeyword = 'HelpGenerator#Defines_Tab'
+        Left = 0
+        Top = 113
+        Width = 641
+        Height = 394
+        Align = alClient
+        Lines.Strings = (
+          'VER150'
+          'MSWINDOWS'
+          'WIN32'
+          'CPU386'
+          'CONDITIONALEXPRESSIONS')
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+        OnChange = edProjectNameChange
+      end
+    end
+    object tabGenerate: TTabSheet
+      HelpKeyword = 'HelpGenerator#Generate_Tab'
+      Caption = 'Generate'
+      object memoMessages: TMemo
+        HelpKeyword = 'HelpGenerator#Generate_Tab'
+        Left = 0
+        Top = 137
+        Width = 641
+        Height = 329
+        Align = alClient
+        ScrollBars = ssAutoBoth
+        TabOrder = 1
+        WordWrap = False
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 466
+        Width = 641
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        object btnGenerate: TButton
+          Left = 8
+          Top = 8
+          Width = 201
+          Height = 25
+          Caption = 'Generate Documentation'
+          TabOrder = 0
+          OnClick = btnGenerateClick
+        end
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 641
+        Height = 137
+        Align = alTop
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 8
+          Top = 5
+          Width = 632
+          Height = 100
+          Anchors = [akLeft, akTop, akRight]
+          Caption = 
+            'When you click the "Generate Documentation" button, Help Generat' +
+            'or will begin to process your input files and create documentati' +
+            'on for them.  Messages describing what is happening will appear ' +
+            'in the area below.  You can control how many messages appear usi' +
+            'ng the "Message Level" on the Options tab. If you are generating' +
+            ' web pages, your web browser will display the web pages that wer' +
+            'e generated, when they have been created. '
+          WordWrap = True
+        end
+      end
+    end
+  end
+  object lbNavigator: TListBox
+    Left = 0
+    Top = 0
+    Width = 201
+    Height = 515
+    Align = alLeft
+    ItemHeight = 20
+    TabOrder = 1
+    OnClick = lbNavigatorClick
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = 'hgs'
+    Filter = '*.hgs|*.hgs'
+    FilterIndex = 0
+    Height = 0
+    Title = 'Save'
+    Width = 0
+    Left = 220
+    Top = 179
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'Pascal Files (*.pas, *.pp, *.PAS, *.dpr)|*.pas;*.pp;*.PAS;*.dpr'
+    FilterIndex = 0
+    Options = [ofAllowMultiSelect, ofEnableSizing, ofHideReadOnly]
+    Height = 0
+    Title = 'Select File'
+    Width = 0
+    Left = 244
+    Top = 187
+  end
+  object OpenDialog2: TOpenDialog
+    Filter = '*.hgs|*.hgs'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 276
+    Top = 187
+  end
+  object MainMenu1: TMainMenu
+    Left = 140
+    Top = 211
+    object miFile: TMenuItem
+      Caption = '&File'
+      object New1: TMenuItem
+        Caption = '&New'
+        OnClick = New1Click
+      end
+      object Open1: TMenuItem
+        Caption = '&Open'
+        OnClick = Open1Click
+      end
+      object Save1: TMenuItem
+        Caption = '&Save'
+        OnClick = Save1Click
+      end
+      object Exit1: TMenuItem
+        Caption = '&Exit'
+        OnClick = Exit1Click
+      end
+    end
+    object miHelp: TMenuItem
+      Caption = 'Help'
+      object Help2: TMenuItem
+        Caption = 'Help'
+        OnClick = Help2Click
+      end
+      object About1: TMenuItem
+        Caption = 'About'
+        OnClick = About1Click
+      end
+    end
+  end
+  object odExtraFiles: TOpenDialog
+    Filter = 'Text Files (*.txt)|*.txt|All Files (*.*)|*.*'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 308
+    Top = 186
+  end
+  object odDotLocation: TOpenDialog
+    Filter = '(dot.exe)|dot.exe'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 380
+    Top = 202
+  end
+  object ProgramDialog: TOpenDialog
+    Filter = 'Programs (*.exe)|*.exe'
+    FilterIndex = 0
+    Height = 0
+    Width = 0
+    Left = 412
+    Top = 208
+  end
+end
